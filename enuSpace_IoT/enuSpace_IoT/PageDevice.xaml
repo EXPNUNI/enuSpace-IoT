@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="enuSpace_IoT.PageDevice"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:enuSpace_IoT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FF1A85A4">
+        <Image x:Name="image_logo" Source="Assets/enuSpace_logo.png" Height="73" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="325"/>
+        <Button x:Name="gui_go_main" Visibility="Collapsed" Content="메인 페이지 이동" Click="gui_go_mainpage" HorizontalAlignment="Center" VerticalAlignment="Center" Height="150" Width="400" FontWeight="Bold" FontSize="24" Foreground="White"/>
+
+        <Button x:Name="gui_go_manual_main" Visibility="Visible" Content="건너뛰기" Click="gui_go_mainpage" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="56" Width="272" FontWeight="Bold" FontSize="24" Foreground="White" Margin="0,0,10,45"/>
+
+        <Grid x:Name="gui_device"  Visibility="Visible" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="483">
+            <Rectangle Margin="-1,-2,0,0" Fill="#7FF0E6E3" Stroke="#CCEA720F" Height="485" VerticalAlignment="Top" HorizontalAlignment="Left" Width="640"/>
+            <ComboBox x:Name="gui_device_combo" HorizontalAlignment="Left" Margin="242,42,0,0" VerticalAlignment="Top" Width="183" Height="43" FontWeight="Bold" FontSize="20"/>
+
+            <TextBlock Margin="42,48,0,0" TextWrapping="Wrap" Text="디바이스 타입" FontSize="20" Foreground="Black" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="157" FontWeight="Bold"/>
+            <TextBlock Margin="42,119,0,0" TextWrapping="Wrap" Text="디바이스 이름" FontSize="20" Foreground="Black" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="157" FontWeight="Bold"/>
+            <TextBlock Margin="42,181,0,0" TextWrapping="Wrap" Text="디바이스 키 (*)" FontSize="20" Foreground="Black" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="157" FontWeight="Bold"/>
+            <TextBlock Margin="42,244,0,0" TextWrapping="Wrap" Text="디바이스 설명" FontSize="20" Foreground="Black" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="157" FontWeight="Bold"/>
+
+            <TextBox x:Name="gui_device_name" Margin="242,109,0,0" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Left" Width="350" Height="40" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox x:Name="gui_device_key" IsEnabled="False" Margin="242,174,0,0" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Left" Width="350" Height="40" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox x:Name="gui_device_desc" Margin="242,236,0,0" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Left" Width="350" Height="40" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Button x:Name="gui_regbutton" Content="디바이스 등록" Click="gui_device_register" HorizontalAlignment="Left" Margin="42,301,0,0" VerticalAlignment="Top" FontSize="20" Height="48" Width="547" FontWeight="Bold"/>
+            <Button x:Name="gui_re_regbutton" Content="디바이스 재등록" Visibility="Collapsed" Click="gui_device_re_register" HorizontalAlignment="Left" Margin="42,301,0,0" VerticalAlignment="Top" FontSize="20" Height="48" Width="547" FontWeight="Bold"/>
+
+            <ListBox x:Name="gui_listBox" HorizontalAlignment="Right" Background="#FFEBFDE7" Width="547" Margin="0,368,50,0" Height="93" VerticalAlignment="Top">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Description}" Width="250" Foreground="Yellow" SelectionHighlightColor="Yellow" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+
+
+        <TextBox x:Name="gui_status" TextWrapping="Wrap" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="White" Height="40" VerticalAlignment="Bottom"/>
+    </Grid>
+</Page>

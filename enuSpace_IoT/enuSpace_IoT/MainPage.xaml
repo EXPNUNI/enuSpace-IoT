@@ -1,0 +1,137 @@
+﻿<Page
+    x:Class="enuSpace_IoT.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:enuSpace_IoT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="DeviceListSource"/>
+    </Page.Resources>
+
+    <Grid Background="#FF128F6D">
+        <Image x:Name="image_logo" Source="Assets/enuSpace_logo.png" Height="73" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="325"/>
+        <TextBlock x:Name="gui_user_name" Margin="135,10,0,0" TextWrapping="Wrap" Text="USER NAME" FontSize="24" Foreground="White" Height="39" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="267"/>
+
+        <Rectangle Margin="108,102,0,0" Fill="#7FF0E6E3" Stroke="#CCEA720F" Height="746" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1066"/>
+        <Image x:Name="image" Source="Assets/arduino_uno.png" Height="350.666" Margin="0,280.284,1080.616,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="495.667" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Image.RenderTransform>
+                <CompositeTransform Rotation="90"/>
+            </Image.RenderTransform>
+        </Image>
+
+        <ListBox x:Name="gui_serial_device" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding Source={StaticResource DeviceListSource}}" Background="#FF0B9380" Margin="297,141,0,0" Foreground="#FF0E0600" HorizontalAlignment="Left" Width="553" Height="79" VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Id}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button x:Name="gui_button_logout" Content="Logout" Click="gui_button_logout_click" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="110"/>
+        <Button x:Name="gui_button_reset_device" Content="Reset Device" Click="gui_button_reset_device_click" HorizontalAlignment="Right" Margin="0,0,44,72" VerticalAlignment="Bottom" Width="110"/>
+
+        <Button x:Name="gui_button_connect" Content="Connect" Click="gui_button_connect_click" HorizontalAlignment="Left" Margin="138,172,0,0" VerticalAlignment="Top" Width="110"/>
+        <Button x:Name="gui_button_disconnect" Content="Disconnect" Click="gui_button_disconnect_click" HorizontalAlignment="Left" Margin="140,217,0,0" VerticalAlignment="Top" Width="108"/>
+        <CheckBox  x:Name="gui_chk_autoconnect" HorizontalAlignment="Left" Height="19" Margin="135,120,0,0" Content="Auto Connect" VerticalAlignment="Top" Width="248" FontSize="15" Foreground="#FF020000" FontWeight="Bold"/>
+
+        <TextBlock Margin="297,112,0,0" TextWrapping="Wrap" Text="Serial Device :" FontSize="20" Foreground="Black" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="162" FontWeight="Bold"/>
+        <TextBlock Margin="138,267,0,0" TextWrapping="Wrap" Text="Baud Rate:" FontSize="20" Foreground="Black" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110" FontWeight="Bold"/>
+        <TextBlock Margin="138,305,0,0" TextWrapping="Wrap" Text="Serial Config:" FontSize="20" Foreground="Black" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136" FontWeight="Bold"/>
+        <TextBox x:Name="gui_baud_rate" Text="57600" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="275,0,1537,781" FontSize="15"/>
+        <ComboBox x:Name="gui_serial_config" HorizontalAlignment="Left" Margin="275,304,0,0" VerticalAlignment="Top" Width="108" Height="32"/>
+
+        <TextBox x:Name="gui_status" TextWrapping="Wrap" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="White" Height="40" VerticalAlignment="Bottom"/>
+
+        <CheckBox  x:Name="gui_chk_A0" HorizontalAlignment="Left" Height="19" Margin="265,536,0,0" Content="A0" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_A1" HorizontalAlignment="Left" Height="19" Margin="265,568,0,0" Content="A1" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_A2" HorizontalAlignment="Left" Height="19" Margin="265,601,0,0" Content="A2" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_A3" HorizontalAlignment="Left" Height="19" Margin="265,632,0,0" Content="A3" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_A4" HorizontalAlignment="Left" Height="19" Margin="265,665,0,0" Content="A4" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_A5" HorizontalAlignment="Left" Height="19" Margin="265,696,0,0" Content="A5" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D2" HorizontalAlignment="Left" Height="19" Margin="785,642,0,0" Content="D2" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D3" HorizontalAlignment="Left" Height="19" Margin="785,611,0,0" Content="D3" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D4" HorizontalAlignment="Left" Height="19" Margin="785,578,0,0" Content="D4" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D5" HorizontalAlignment="Left" Height="19" Margin="785,546,0,0" Content="D5" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D6" HorizontalAlignment="Left" Height="19" Margin="785,512,0,0" Content="D6" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D7" HorizontalAlignment="Left" Height="19" Margin="785,481,0,0" Content="D7" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D8" HorizontalAlignment="Left" Height="19" Margin="785,402,0,0" Content="D8" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D9" HorizontalAlignment="Left" Height="19" Margin="785,371,0,0" Content="D9" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D10" HorizontalAlignment="Left" Height="19" Margin="785,338,0,0" Content="D10" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D11" HorizontalAlignment="Left" Height="19" Margin="785,306,0,0" Content="D11" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D12" HorizontalAlignment="Left" Height="19" Margin="785,273,0,0" Content="D12" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+        <CheckBox x:Name="gui_chk_D13" HorizontalAlignment="Left" Height="19" Margin="785,241,0,0" Content="D13" VerticalAlignment="Top" Width="25" FontSize="15" Foreground="#FF020000" FontWeight="Bold" Checked="gui_chk_Checked" Unchecked="gui_chk_Checked"/>
+
+        <TextBox x:Name="gui_val_A0" Text="A0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="319,0,1525,514" FontSize="15"/>
+        <TextBox x:Name="gui_val_A1" Text="A1" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="319,0,1525,482" FontSize="15"/>
+        <TextBox x:Name="gui_val_A2" Text="A2" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="319,0,1525,450" FontSize="15"/>
+        <TextBox x:Name="gui_val_A3" Text="A3" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="319,0,1525,418" FontSize="15"/>
+        <TextBox x:Name="gui_val_A4" Text="A4" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="319,0,1525,386" FontSize="15"/>
+        <TextBox x:Name="gui_val_A5" Text="A5" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="319,0,1525,354" FontSize="15"/>
+        <TextBox x:Name="gui_val_D2" Text="D2" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,408" FontSize="15"/>
+        <TextBox x:Name="gui_val_D3" Text="D3" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,440" FontSize="15"/>
+        <TextBox x:Name="gui_val_D4" Text="D4" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,472" FontSize="15"/>
+        <TextBox x:Name="gui_val_D5" Text="D5" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,504" FontSize="15"/>
+        <TextBox x:Name="gui_val_D6" Text="D6" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,536" FontSize="15"/>
+        <TextBox x:Name="gui_val_D7" Text="D7" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,568" FontSize="15"/>
+        <TextBox x:Name="gui_val_D8" Text="D8" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,648" FontSize="15"/>
+        <TextBox x:Name="gui_val_D9" Text="D9" BorderBrush="White" Height="21" VerticalAlignment="Bottom" Margin="846,0,998,680" FontSize="15"/>
+        <TextBox x:Name="gui_val_D10" Text="D10" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,712" FontSize="15"/>
+        <TextBox x:Name="gui_val_D11" Text="D11" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,744" FontSize="15"/>
+        <TextBox x:Name="gui_val_D12" Text="D12" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,776" FontSize="15"/>
+        <TextBox x:Name="gui_val_D13" Text="D13" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="846,0,998,808" FontSize="15"/>
+
+        <TextBox x:Name="gui_set_val_D2" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,408" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D3" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,440" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D4" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,472" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D5" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,504" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D6" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,536" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D7" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,568" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D8" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,648" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D9" Text="0" BorderBrush="White" Height="21" VerticalAlignment="Bottom" Margin="1042,0,802,680" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D10" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,712" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D11" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,744" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D12" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,776" FontSize="15"/>
+        <TextBox x:Name="gui_set_val_D13" Text="0" BorderBrush="White" Height="22" VerticalAlignment="Bottom" Margin="1042,0,802,808" FontSize="15"/>
+
+        <ComboBox x:Name="gui_pin_D2" HorizontalAlignment="Left" Margin="927,642,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D2_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D3" HorizontalAlignment="Left" Margin="927,610,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D3_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D4" HorizontalAlignment="Left" Margin="927,578,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D4_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D5" HorizontalAlignment="Left" Margin="927,546,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D5_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D6" HorizontalAlignment="Left" Margin="927,514,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D6_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D7" HorizontalAlignment="Left" Margin="927,482,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D7_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D8" HorizontalAlignment="Left" Margin="927,402,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D8_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D9" HorizontalAlignment="Left" Margin="927,370,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D9_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D10" HorizontalAlignment="Left" Margin="927,338,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D10_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D11" HorizontalAlignment="Left" Margin="927,306,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D11_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D12" HorizontalAlignment="Left" Margin="927,274,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D12_SelectionChanged"/>
+        <ComboBox x:Name="gui_pin_D13" HorizontalAlignment="Left" Margin="927,242,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_pin_D13_SelectionChanged"/>
+
+        <Button x:Name="gui_set_D2" Content="Set" HorizontalAlignment="Left" Margin="1118,642,0,0" VerticalAlignment="Top" Click="gui_set_d2_click"/>
+        <Button x:Name="gui_set_D3" Content="Set" HorizontalAlignment="Left" Margin="1118,610,0,0" VerticalAlignment="Top" Click="gui_set_d3_click"/>
+        <Button x:Name="gui_set_D4" Content="Set" HorizontalAlignment="Left" Margin="1118,578,0,0" VerticalAlignment="Top" Click="gui_set_d4_click"/>
+        <Button x:Name="gui_set_D5" Content="Set" HorizontalAlignment="Left" Margin="1118,546,0,0" VerticalAlignment="Top" Click="gui_set_d5_click"/>
+        <Button x:Name="gui_set_D6" Content="Set" HorizontalAlignment="Left" Margin="1118,514,0,0" VerticalAlignment="Top" Click="gui_set_d6_click"/>
+        <Button x:Name="gui_set_D7" Content="Set" HorizontalAlignment="Left" Margin="1118,482,0,0" VerticalAlignment="Top" Click="gui_set_d7_click"/>
+        <Button x:Name="gui_set_D8" Content="Set" HorizontalAlignment="Left" Margin="1118,402,0,0" VerticalAlignment="Top" Click="gui_set_d8_click"/>
+        <Button x:Name="gui_set_D9" Content="Set" HorizontalAlignment="Left" Margin="1118,370,0,0" VerticalAlignment="Top" Click="gui_set_d9_click"/>
+        <Button x:Name="gui_set_D10" Content="Set" HorizontalAlignment="Left" Margin="1118,338,0,0" VerticalAlignment="Top" Click="gui_set_d10_click"/>
+        <Button x:Name="gui_set_D11" Content="Set" HorizontalAlignment="Left" Margin="1118,306,0,0" VerticalAlignment="Top" Click="gui_set_d11_click"/>
+        <Button x:Name="gui_set_D12" Content="Set" HorizontalAlignment="Left" Margin="1118,274,0,0" VerticalAlignment="Top" Click="gui_set_d12_click"/>
+        <Button x:Name="gui_set_D13" Content="Set" HorizontalAlignment="Left" Margin="1118,242,0,0" VerticalAlignment="Top" Click="gui_set_d13_click"/>
+
+
+        <TextBlock Margin="1217,218,0,0" TextWrapping="Wrap" Text="Analog:" FontSize="20" Foreground="Black" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110" FontWeight="Bold"/>
+        <TextBlock Margin="1217,549,0,0" TextWrapping="Wrap" Text="Digital:" FontSize="20" Foreground="Black" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110" FontWeight="Bold"/>
+
+        <Canvas x:Name="gui_chart1" HorizontalAlignment="Right" Height="266" Margin="0,255,44,0" VerticalAlignment="Top" Width="659" Background="Black"/>
+        <Canvas x:Name="gui_chart2" HorizontalAlignment="Right" Height="266" Margin="0,582,44,0" VerticalAlignment="Top" Width="659" Background="Black"/>
+
+        <ComboBox x:Name="gui_analog_chart" HorizontalAlignment="Left" Margin="1312,217,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_analog_chart_SelectionChanged"/>
+        <ComboBox x:Name="gui_digital_chart" HorizontalAlignment="Left" Margin="1312,544,0,0" VerticalAlignment="Top" Width="97" Height="32" SelectionChanged="gui_digital_chart_SelectionChanged"/>
+
+
+    </Grid>
+</Page>
